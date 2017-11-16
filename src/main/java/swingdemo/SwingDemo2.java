@@ -36,18 +36,21 @@ public class SwingDemo2 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                try {
-                    control.Save(CardId.getText(), InputUrl.getText());
-                } catch (Exception ex) {
-                    //TODO
-                }
+                String[] result = control.GetUrlAndIds(CardId.getText());
+                textArea2.setText(result[0]);
+                textArea3.setText(result[1]);
             }
         });
         Save.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                CardId.getText();
+                try {
+                    control.Save(CardId.getText(), InputUrl.getText());
+                } catch (Exception ex) {
+                    //TODO
+                }
+                InputUrl.setText("");
             }
         });
     }
